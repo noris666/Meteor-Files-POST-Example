@@ -32,7 +32,7 @@ if (Meteor.isServer) {
 	
 	Picker.middleware(_multerInstance.single('photo'));		
 
-	Picker.route('/api-avatars/v1/upload', function(params, req, res, next) {
+	Picker.route('/api/v1/upload', function(params, req, res, next) {
 		if (req.file !== undefined && req.file.mimetype.substr(0, 6) == 'image/' && params.query.authToken.length) {
 			const hashedToken = Accounts._hashLoginToken(params.query.authToken);
 			const user = Meteor.users.findOne({ 'services.resume.loginTokens.hashedToken': hashedToken });
